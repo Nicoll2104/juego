@@ -87,9 +87,8 @@ import img7 from '/src/assets/img7.png';
 const showCategoryModal = ref(false);
 const showLevelModal = ref(false);
 const selectedCategory = ref(null);
-const selectedLevel = ref(null);
 const alfa = ["A", "B", "C", "D", "F", "G", "H", "I", "J", "K", "L", "M", "N", "Ñ", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
-const palabra = "ahorcado";
+const palabra = "koala";
 const encontrar = ref([]);
 const img = [img1, img2, img3, img4, img5, img6, img7];
 const imagen = ref(0);
@@ -139,7 +138,7 @@ const completado = computed(() => {
 
   if (confirmacion === true) return "ganaste";
 
-  return "nada";
+  return "perdiste";
 });
 </script>
 
@@ -210,5 +209,6 @@ const completado = computed(() => {
   border: 1px solid rgb(0, 0, 0);
   font-size: x-large;
 }
+
 
 </style>
