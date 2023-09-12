@@ -1,6 +1,6 @@
 <template>
   <div class="body1">
-  <div class="body">
+  <div class="body" v-if="hola===true">
     <div class="div1">
       <div class="sub1">
         <span class="titulo">E</span> <span class="titulo">L</span> <span class="titulo"></span>
@@ -10,40 +10,58 @@
       </div>
 
       <div class="sub3">
-        <button @click="showModal = true">Jugar</button>
+          <button @click="showCategoryModal = true">Jugar</button>
+        </div>
+
+        <q-dialog v-model="showCategoryModal">
+          <q-card>
+            <q-card-section>
+              <div class="text-h6">Selecciona una categoría</div>
+            </q-card-section>
+            <q-card-section class="q-pt-none" id="todo">
+              <div class="imagen" @click="selectCategory(1)">
+                <img src="./assets/colores.png" alt="">
+              </div>
+              <div class="imagen" @click="selectCategory(2)">
+                <img src="./assets/frutas.png" alt="">
+              </div>
+              <div class="imagen" @click="selectCategory(3)">
+                <img src="./assets/animales.png" alt="">
+              </div>
+              <div class="imagen" @click="selectCategory(4)">
+                <img src="./assets/nombres.png" alt="">
+              </div>
+            </q-card-section>
+            <q-card-actions align="right">
+              <q-btn flat label="Cerrar" color="primary" v-close-popup @click="showCategoryModal = false" />
+            </q-card-actions>
+          </q-card>
+        </q-dialog>
+        <q-dialog v-model="showLevelModal" :persistent="true">
+          <q-card>
+            <q-card-section>
+              <div class="text-h6">Selecciona un nivel</div>
+            </q-card-section>
+            <q-card-section class="q-pt-none" id="todo">
+              <button @click=" hola=false" class="nivel">Facil</button>
+              <button @click=" hola=false" class="nivel">Medio</button>
+              <button @click=" hola=false" class="nivel">dificil</button>
+            </q-card-section>
+            <q-card-actions align="right">
+              <q-btn flat label="Cerrar" color="primary" v-close-popup @click="showLevelModal = false" />
+            </q-card-actions>
+          </q-card>
+        </q-dialog>
       </div>
-      <q-dialog v-model="showModal">
-        <q-card>
-          <q-card-section>
-            <div class="text-h6">categorías</div>
-          </q-card-section>
-          <q-card-section class="q-pt-none" id="todo">
-            <div class="imagen" @click="selectCategory(1)">
-            <img src="./assets/colores.png" alt="">
-          </div>
-          <div class="imagen" @click="selectCategory(2)">
-            <img src="./assets/frutas.png" alt="">
-          </div>
-          <div class="imagen" @click="selectCategory(3)">
-            <img src="./assets/animales.png" alt="">
-          </div>
-          <div class="imagen" @click="selectCategory(4)">
-            <img src="./assets/nombres.png" alt="">
-          </div>
-        </q-card-section>
-          <q-card-actions align="right">
-            <q-btn flat label="Cerrar" color="primary" v-close-popup @click="showModal = false" />
-          </q-card-actions>
-        </q-card>
-      </q-dialog>
-    </div>
-    <div class="div2">
+      <div class="div2">
+      </div>
     </div>
   </div>
-    <div class="contenedor">
+  <div v-if="hola===false">
+    <div class="contenedor" >
       <button v-for="(item, index) in alfa" :key="index" @click="revisar(item)" class="palabras">{{ item }}</button>
       <div class="cuadros" v-for="l in palabra">
-        <p>{{ comprobar(l) }}</p>
+        <p class="cambiar">{{ comprobar(l) }}</p>
       </div>
     </div>
     <div>
@@ -53,6 +71,7 @@
       <h1>estado: {{ completado }}</h1>
     </div>
   </div>
+    
 </template>
 
 <script setup>
@@ -65,11 +84,16 @@ import img5 from '/src/assets/img5.png';
 import img6 from '/src/assets/img6.png';
 import img7 from '/src/assets/img7.png';
 
+const showCategoryModal = ref(false);
+const showLevelModal = ref(false);
+const selectedCategory = ref(null);
+const selectedLevel = ref(null);
 const alfa = ["A", "B", "C", "D", "F", "G", "H", "I", "J", "K", "L", "M", "N", "Ñ", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 const palabra = "ahorcado";
 const encontrar = ref([]);
 const img = [img1, img2, img3, img4, img5, img6, img7];
 const imagen = ref(0);
+const hola = ref(true)
 
 const revisar = (letra) => {
   if (encontrar.value.includes(letra)) return;
@@ -81,6 +105,12 @@ const revisar = (letra) => {
     imagen.value += 1;
     event.target.setAttribute("disabled", "true");
   }
+};
+
+const selectCategory = (category) => {
+  selectedCategory.value = category;
+  showCategoryModal.value = false;
+  showLevelModal.value = true;
 };
 
 const comprobar = computed(() => {
@@ -111,7 +141,6 @@ const completado = computed(() => {
 
   return "nada";
 });
-const showModal = ref(false);
 </script>
 
 
