@@ -1,7 +1,6 @@
 <template>
   <div class="body1">
     <div class="" v-if="hola === true">
-      <h1>{{hola}}</h1>
       <div class="div1">
         <div class="sub1">
           <span class="titulo">E</span> <span class="titulo">L</span>
@@ -69,13 +68,13 @@
           >
             {{ item }}
           </button>
-          <div class="cuadros" v-for="l in palabra">
-            <p class="cambiar">{{ comprobar(l) }}</p>
+          <div class="cuadros" v-for="letra in palabra.value">
+            <p class="cambiar">{{ comprobar(letra) }}</p>
           </div>
         </div>
         <div>
           <img :src="img[imagen]" alt="" />
-          <button @click="volver(completado)"></button>
+          <button @click="volver(completado)">volver</button>
         </div>
         <div>
           <h1>Estado: {{ completado }}</h1>
@@ -217,7 +216,7 @@ const comprobar = computed(() => {
 
 const completado = computed(() => {
   let confirmacion = false;
-  for (const letra of palabra) {
+  for (const letra of palabra.value) {
     if (!encontrar.value.includes(letra.toUpperCase())) {
       confirmacion = false;
       break;
@@ -274,14 +273,13 @@ const carga = async (item) => {
   hola.value = false;
   error.value = 0;
   data.value.dificultad = item;
-  /*   app.value = false; */
   cargados.value = true;
   
+  acomodar();
 };
 
 const comenzar = (item) => {
   data.value.dificultad = item;
-  /*   app.value = false; */
 };
 
 onMounted(() => {});
@@ -362,7 +360,7 @@ a {
   height: 40px;
   justify-content: center;
   align-items: center;
-  border: 1px solid rgb(0, 0, 0);
+  border: 7px solid rgb(0, 0, 0);
   font-size: x-large;
   margin: 1%;
   background-color: #050b63;
