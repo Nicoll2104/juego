@@ -68,8 +68,8 @@
           >
             {{ item }}
           </button>
-          <div class="cuadros" v-for="letra in palabra.value">
-            <p class="cambiar">{{ comprobar(letra) }}</p>
+          <div class="cuadros" v-for="letra in palabra">
+            <p class="cambiar">{{ comprobar(letra.toLowerCase()) }}</p>
           </div>
         </div>
         <div>
@@ -105,6 +105,7 @@ const alfa = [
   "B",
   "C",
   "D",
+  "E",
   "F",
   "G",
   "H",
@@ -130,24 +131,24 @@ const alfa = [
 ];
 const baseDatos = {
   colores: {
-    Facil: ["Rojo", "Verde", "Azul", "Amarillo", "Blanco"],
-    Medio: ["Naranja", "Morado", "Gris", "Rosa", "Negro"],
-    Dificil: ["Turquesa", "Magenta", "Cian", "Dorado", "Plateado"],
+    Facil: ["rojo", "verde", "azul", "amarillo", "blanco"],
+    Medio: ["naranja", "morado", "gris", "rosado", "negro"],
+    Dificil: ["turquesa", "magenta", "cian", "dorado", "plateado"],
   },
   frutas: {
-    Facil: ["Manzana", "Banana", "Fresa", "Naranja", "Pera"],
-    Medio: ["Uva", "Kiwi", "Mango", "Cereza", "Sandía"],
-    Dificil: ["Granada", "Pitahaya", "Lichi", "Maracuyá", "Carambola"],
+    Facil: ["manzana", "banana", "fresa", "naranja", "pera"],
+    Medio: ["uva", "kiwi", "mango", "cereza", "sandia"],
+    Dificil: ["granada", "pitahaya", "lichi", "maracuya", "carambola"],
   },
   animales: {
-    Facil: ["Perro", "Gato", "Pato", "Conejo", "Tigre"],
-    Medio: ["León", "Elefante", "Jirafa", "Cocodrilo", "Hipopótamo"],
-    Dificil: ["Oricteropo", "Axolote", "Quokka", "Narval", "Pangolín"],
+    Facil: ["perro", "gato", "pato", "conejo", "tigre"],
+    Medio: ["león", "elefante", "jirafa", "cocodrilo", "hipopotamo"],
+    Dificil: ["oricteropo", "axolote", "quokka", "narval", "pangolin"],
   },
   nombres: {
-    Facil: ["Juan", "Ana", "Carlos", "Luis", "Sofía"],
-    Medio: ["Eduardo", "Valentina", "Gabriel", "Isabella", "Mateo"],
-    Dificil: ["Sebastián", "Constanza", "Benjamín", "Valeria", "Leonardo"],
+    Facil: ["juan", "ana", "carlos", "luis", "sofia"],
+    Medio: ["eduardo", "valentina", "gabriel", "isabella", "mateo"],
+    Dificil: ["sebastian", "constanza", "benjamin", "valeria", "leonardo"],
   },
 };
 const palabra = ref([]);
@@ -278,11 +279,6 @@ const carga = async (item) => {
   acomodar();
 };
 
-const comenzar = (item) => {
-  data.value.dificultad = item;
-};
-
-onMounted(() => {});
 const agregarcate = (item) => {
   data.value.categorias = item;
   cambioPreguntaModal.value = false;
