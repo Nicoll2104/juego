@@ -85,7 +85,7 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from "vue";
+import { ref, computed } from "vue";
 import img1 from "/src/assets/img1.png";
 import img2 from "/src/assets/img2.png";
 import img3 from "/src/assets/img3.png";
@@ -98,7 +98,6 @@ import animales from "/src/assets/animales.png";
 import frutas from "/src/assets/frutas.png";
 import nombres from "/src/assets/nombres.png";
 
-/* const app = ref(true); */
 const cambioPreguntaModal = ref(true);
 const alfa = [
   "A",
@@ -211,6 +210,7 @@ const comprobar = computed(() => {
     if (buscar) {
       return letra;
     }
+    imagen.value+=1
     return "";
   };
 });
