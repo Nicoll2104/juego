@@ -58,29 +58,28 @@
         </div>
       </div>
     </div>
-      <div v-else>
-        <div class="contenedor">
-          <button
-            v-for="(item, index) in alfa"
-            :key="index"
-            @click="revisar(item)"
-            class="palabras"
-          >
-            {{ item }}
-          </button>
-          <div class="cuadros" v-for="letra in palabra">
-            <p class="cambiar">{{ comprobar(letra.toLowerCase()) }}</p>
-          </div>
-        </div>
-        <div>
-          <img :src="img[imagen]" alt="" />
-          <button @click="volver(completado)">volver</button>
-        </div>
-        <div>
-          <h1>Estado: {{ completado }}</h1>
+    <div v-else>
+      <div class="contenedor">
+        <button
+          v-for="(item, index) in alfa"
+          :key="index"
+          @click="revisar(item)"
+          class="palabras"
+        >
+          {{ item }}
+        </button>
+        <div class="cuadros" v-for="letra in palabra">
+          <p class="cambiar">{{ comprobar(letra.toLowerCase()) }}</p>
         </div>
       </div>
-    
+      <div>
+        <img :src="img[imagen]" alt="" />
+        <button @click="volver(completado)">volver</button>
+      </div>
+      <div>
+        <h1>Estado: {{ completado }}</h1>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -185,19 +184,22 @@ const revisar = (letra) => {
       "data",
       data.value.dificultad !== "dificil"
     );
+
     if (
       encontrar.value.includes(letra) &&
       data.value.dificultad === "Dificil"
     ) {
-      error.value += errorDificultad[data.value.dificultad];
+      imagen.value += errorDificultad[data.value.dificultad];
       return;
     }
+
     encontrar.value.push(letra);
     if (data.value.dificultad !== "Dificil")
       event.target.setAttribute("disabled", "true");
     return;
   }
-  error.value += errorDificultad[data.value.dificultad];
+
+  imagen.value += errorDificultad[data.value.dificultad];
   if (data.value.dificultad !== "Dificil")
     event.target.setAttribute("disabled", "true");
 };
@@ -210,7 +212,6 @@ const comprobar = computed(() => {
     if (buscar) {
       return letra;
     }
-    imagen.value+=1
     return "";
   };
 });
@@ -267,7 +268,6 @@ const datos = ref([]);
 const cargados = ref(false);
 
 const carga = async (item) => {
-
   encontrar.value = [""];
   icon.value = false;
   cambioPreguntaModal.value = true;
@@ -275,7 +275,7 @@ const carga = async (item) => {
   error.value = 0;
   data.value.dificultad = item;
   cargados.value = true;
-  
+
   acomodar();
 };
 
