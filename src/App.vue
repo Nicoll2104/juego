@@ -69,7 +69,7 @@
             {{ item }}
           </button>
           <div class="cuadros" v-for="letra in palabra">
-            <p class="cambiar">{{ comprobar(letra.toLowerCase()) }}</p>
+            <p class="cambiar">{{comprobar(letra.toLowerCase()) }}</p>
           </div>
         </div>
         <div>
@@ -80,6 +80,7 @@
           <h1>Estado: {{ completado }}</h1>
         </div>
       </div>
+      {{imagen}}
     
   </div>
 </template>
@@ -189,7 +190,7 @@ const revisar = (letra) => {
       encontrar.value.includes(letra) &&
       data.value.dificultad === "Dificil"
     ) {
-      error.value += errorDificultad[data.value.dificultad];
+      imagen.value += errorDificultad[data.value.dificultad];
       return;
     }
     encontrar.value.push(letra);
@@ -197,7 +198,7 @@ const revisar = (letra) => {
       event.target.setAttribute("disabled", "true");
     return;
   }
-  error.value += errorDificultad[data.value.dificultad];
+  imagen.value += errorDificultad[data.value.dificultad];
   if (data.value.dificultad !== "Dificil")
     event.target.setAttribute("disabled", "true");
 };
@@ -210,7 +211,7 @@ const comprobar = computed(() => {
     if (buscar) {
       return letra;
     }
-    imagen.value+=1
+
     return "";
   };
 });
