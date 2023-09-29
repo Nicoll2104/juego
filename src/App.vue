@@ -19,7 +19,31 @@
         >
           jugar
         </button>
-        <div class="q-pa-md q-gutter-sm">
+        
+      </div>
+    </div>
+      <div v-else>
+        <div class="contenedor">
+          <button
+            v-for="(item, index) in alfa"
+            :key="index"
+            @click="revisar(item)"
+            :disabled="imagen > 6 || completado ==='ganaste'"  class="palabras"
+          >
+            {{ item }}
+          </button>
+          <div class="cuadros" v-for="letra in palabra">
+            <p class="cambiar">{{comprobar(letra.toLowerCase()) }}</p>
+          </div>
+        </div>
+        <div>
+          <img :src="img[imagen]" alt="" />
+          <button @click="volver(completado); icon = true;">volver</button>
+        </div>
+        <div>
+        </div>
+      </div>
+      <div class="q-pa-md q-gutter-sm">
           <q-dialog v-model="icon">
             <q-card>
               <q-card-section class="row items-center q-pb-none">
@@ -56,32 +80,6 @@
             </q-card>
           </q-dialog>
         </div>
-      </div>
-    </div>
-      <div v-else>
-        <div class="contenedor">
-          <button
-            v-for="(item, index) in alfa"
-            :key="index"
-            @click="revisar(item)"
-            class="palabras"
-          >
-            {{ item }}
-          </button>
-          <div class="cuadros" v-for="letra in palabra">
-            <p class="cambiar">{{comprobar(letra.toLowerCase()) }}</p>
-          </div>
-        </div>
-        <div>
-          <img :src="img[imagen]" alt="" />
-          <button @click="volver(completado)">volver</button>
-        </div>
-        <div>
-          <h1>Estado: {{ completado }}</h1>
-        </div>
-      </div>
-      {{imagen}}
-    
   </div>
 </template>
 
@@ -156,9 +154,9 @@ const encontrar = ref([]);
 const img = [img1, img2, img3, img4, img5, img6, img7];
 const error = ref(0);
 const errorDificultad = {
-  Facil: 5,
-  Medio: 3,
-  Dificil: 2,
+  Facil: 1,
+  Medio: 2,
+  Dificil: 3,
 };
 const imagen = ref(0);
 const hola = ref(true);
@@ -170,6 +168,7 @@ const numero = () => Math.floor(Math.random() * 3);
 
 const acomodar = () => {
   console.log(data.value);
+  imagen.value = 0;
   const palabras =
     baseDatos[data.value.categorias][data.value.dificultad][numero()];
   const arrpalabras = Array.from(palabras);
@@ -230,9 +229,15 @@ const completado = computed(() => {
 });
 
 const volver = (confirmacion) => {
-  if (confirmacion === "ganaste" || error.value >= 9) icon.value = true;
-  return;
+  if (confirmacion === "ganaste" || error.value >= 9) {
+    imagen.value = 0;
+    encontrar.value = [];
+    error.value = 0;
+    palabra.value = [];
+    icon.value = true;
+  }
 };
+
 
 const icon = ref(false);
 
