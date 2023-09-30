@@ -19,7 +19,31 @@
         >
           jugar
         </button>
-        <div class="q-pa-md q-gutter-sm">
+        
+      </div>
+    </div>
+      <div v-else>
+        <div class="contenedor">
+          <button
+            v-for="(item, index) in alfa"
+            :key="index"
+            @click="revisar(item)"
+            :disabled="imagen > 8 || completado ==='ganaste'"  class="palabras"
+          >
+            {{ item }}
+          </button>
+          <div class="cuadros" v-for="letra in palabra">
+            <p class="cambiar">{{comprobar(letra.toLowerCase()) }}</p>
+          </div>
+        </div>
+        <div>
+          <img :src="img[imagen]" alt="" />
+          <button @click="volver(completado); icon = true;">volver</button>
+        </div>
+        <div>
+        </div>
+      </div>
+      <div class="q-pa-md q-gutter-sm">
           <q-dialog v-model="icon">
             <q-card>
               <q-card-section class="row items-center q-pb-none">
@@ -56,32 +80,6 @@
             </q-card>
           </q-dialog>
         </div>
-      </div>
-    </div>
-      <div v-else>
-        <div class="contenedor">
-          <button
-            v-for="(item, index) in alfa"
-            :key="index"
-            @click="revisar(item)"
-            class="palabras"
-          >
-            {{ item }}
-          </button>
-          <div class="cuadros" v-for="letra in palabra">
-            <p class="cambiar">{{comprobar(letra.toLowerCase()) }}</p>
-          </div>
-        </div>
-        <div>
-          <img :src="img[imagen]" alt="" />
-          <button @click="volver(completado)">volver</button>
-        </div>
-        <div>
-          <h1>Estado: {{ completado }}</h1>
-        </div>
-      </div>
-      {{imagen}}
-    
   </div>
 </template>
 
@@ -94,6 +92,8 @@ import img4 from "/src/assets/img4.png";
 import img5 from "/src/assets/img5.png";
 import img6 from "/src/assets/img6.png";
 import img7 from "/src/assets/img7.png";
+import img8 from "/src/assets/img8.png";
+import img9 from "/src/assets/img9.png";
 import colores from "/src/assets/colores.png";
 import animales from "/src/assets/animales.png";
 import frutas from "/src/assets/frutas.png";
@@ -153,12 +153,12 @@ const baseDatos = {
 };
 const palabra = ref([]);
 const encontrar = ref([]);
-const img = [img1, img2, img3, img4, img5, img6, img7];
+const img = [img1, img2, img3, img4, img5, img6, img7, img8, img9];
 const error = ref(0);
 const errorDificultad = {
-  Facil: 5,
-  Medio: 3,
-  Dificil: 2,
+  Facil: 1,
+  Medio: 2,
+  Dificil: 3,
 };
 const imagen = ref(0);
 const hola = ref(true);
@@ -169,7 +169,7 @@ const data = ref({
 const numero = () => Math.floor(Math.random() * 3);
 
 const acomodar = () => {
-  console.log(data.value);
+  imagen.value = 0;
   const palabras =
     baseDatos[data.value.categorias][data.value.dificultad][numero()];
   const arrpalabras = Array.from(palabras);
@@ -230,9 +230,16 @@ const completado = computed(() => {
 });
 
 const volver = (confirmacion) => {
-  if (confirmacion === "ganaste" || error.value >= 9) icon.value = true;
+  if (confirmacion === "ganaste" || error.value >= 9) {
+    icon.value = true;
+    imagen.value = 0;
+    encontrar.value = [];
+    error.value = 0;
+    palabra.value = [];
+  }
   return;
 };
+
 
 const icon = ref(false);
 
@@ -268,7 +275,6 @@ const datos = ref([]);
 const cargados = ref(false);
 
 const carga = async (item) => {
-
   encontrar.value = [""];
   icon.value = false;
   cambioPreguntaModal.value = true;
@@ -296,7 +302,7 @@ const agregarcate = (item) => {
 
 .body1 {
   margin: 0;
-  height: 100vh;
+  height: 180vh;
   background-image: linear-gradient(to top left, #7364f5, #050b63);
   display: grid;
   grid-template-columns: 50% 50%;
