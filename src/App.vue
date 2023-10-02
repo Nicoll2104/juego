@@ -16,14 +16,19 @@
             icon = true;
             formatear();
           "
-        >
-          jugar
+        >jugar
         </button>
-        
       </div>
     </div>
       <div v-else>
+        <div>
+          <img :src="completado ==='ganaste' ? ganaste : imagen<8 ? img[imagen] : perdiste" alt="" />
+        </div>
         <div class="contenedor">
+          <div class="cuadros" v-for="letra in palabra">
+            <p class="cambiar">{{comprobar(letra.toLowerCase()) }}</p>
+          </div>
+          <div>
           <button
             v-for="(item, index) in alfa"
             :key="index"
@@ -32,15 +37,10 @@
           >
             {{ item }}
           </button>
-          <div class="cuadros" v-for="letra in palabra">
-            <p class="cambiar">{{comprobar(letra.toLowerCase()) }}</p>
-          </div>
         </div>
+      </div>
         <div>
-          <img :src="img[imagen]" alt="" />
           <button @click="volver(completado); icon = true;">volver</button>
-        </div>
-        <div>
         </div>
       </div>
       <div class="q-pa-md q-gutter-sm">
@@ -98,7 +98,8 @@ import colores from "/src/assets/colores.png";
 import animales from "/src/assets/animales.png";
 import frutas from "/src/assets/frutas.png";
 import nombres from "/src/assets/nombres.png";
-
+import ganaste from "/src/assets/ganaste.png";
+import perdiste from "/src/assets/perdiste.png";
 const cambioPreguntaModal = ref(true);
 const alfa = [
   "A",
@@ -302,7 +303,7 @@ const agregarcate = (item) => {
 
 .body1 {
   margin: 0;
-  height: 180vh;
+  height: 100vh;
   background-image: linear-gradient(to top left, #7364f5, #050b63);
   display: grid;
   grid-template-columns: 50% 50%;
