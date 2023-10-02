@@ -2,16 +2,11 @@
   <div class="body1">
     <div class="" v-if="hola === true">
       <div class="div1">
+        <img class="logo" src="https://tomplay.com/storage/section-pages/November2022/CzKiXyiZ7kBUBY2iANmG.png" alt="">
         <div class="sub1">
-          <span class="titulo">E</span> <span class="titulo">L</span>
-          <span class="titulo"></span> <span class="titulo">A</span>
-          <span class="titulo">H</span> <span class="titulo">O</span>
-          <span class="titulo">R</span> <span class="titulo">C</span>
-          <span class="titulo">A</span> <span class="titulo">D</span>
-          <span class="titulo">O</span>
+          <span class="titulo">E</span> <span class="titulo">L</span> <span class="titulo"></span> <span class="titulo">A</span> <span class="titulo">H</span> <span class="titulo">O</span> <span class="titulo">R</span> <span class="titulo">C</span> <span class="titulo">A</span> <span class="titulo">D</span> <span class="titulo">O</span>
         </div>
-        <button
-          class="iniciar"
+        <button type="button" class="btn btn-warning"
           @click="
             icon = true;
             formatear();
@@ -295,9 +290,9 @@ const agregarcate = (item) => {
 
 <style scoped>
 .titulo {
-  font-family: "Black Ops One", cursive;
+  font-family: Georgia, 'Times New Roman', Times, serif;
   display: inline-block;
-  border-bottom: 2px solid white;
+  border-bottom: 2px solid #FFF800;
   padding-bottom: 4px;
 }
 
@@ -305,25 +300,19 @@ const agregarcate = (item) => {
   margin: 0;
   height: 100vh;
   background-image: linear-gradient(to top left, #7364f5, #050b63);
-  display: grid;
-  grid-template-columns: 50% 50%;
   text-align: center;
   align-items: center;
 }
 
 .sub1 {
-  height: 20%;
-  margin-top: 25%;
+  text-align: center;
   font-size: 320%;
-}
-
-.sub2 {
-  height: 15%;
 }
 
 span,
 label {
-  color: white;
+  
+  color: #FFF800;
   font-family: "Black Ops One", cursive;
   font-size: 180%;
 }
@@ -374,17 +363,13 @@ a {
 img {
   width: 100%;
   max-width: 300px;
-  margin: 2% auto;
-  display: block;
 }
 
-.q-dialog {
-  max-width: 400px;
-  margin: 0 auto;
-}
-
-.q-card-section {
-  padding: 1rem;
+.logo{
+  height: 330px;
+  width: 100%;
+  max-width: 300px;
+  margin-top: 14%;
 }
 
 .cardCategoria {
@@ -408,5 +393,21 @@ img {
 h1 {
   font-size: xx-large;
   color: white;
+}
+.btn.btn-warning{
+  padding: 0.5%;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  background-color: #8fe3ff;
+  color: #050b63;
+}
+.q-card{
+  background-color: #C4FAF8;
+  align-content: flex-start;
+  justify-content: flex-end;
+}
+.text-h6{
+  color: #050b63;
+  font-weight: 900;
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }
 </style>
