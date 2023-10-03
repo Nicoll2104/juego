@@ -305,7 +305,7 @@ const agregarcate = (item) => {
   background-image: linear-gradient(to top left, #7364f5, #050b63);
   text-align: center;
   align-items: center;
-  background-size: cover; /* Hace que la imagen de fondo se ajuste al tamaño de la ventana */
+  background-size: cover; 
   background-attachment: fixed;
 }
 
@@ -474,24 +474,26 @@ h1 {
 }
 }
 
-@media(max-width: 1200px) {
+
+@media (min-width: 350px) and (max-width: 1200px) {
+  .body1 {
+    height: 140vh;
+  }
 
   .sub1 {
-    margin-top: 10%;
-    font-size: 180%; 
+    font-size: 250%;
   }
 
   button {
-    margin-top: 10%;
-    width: 30%; 
+    width: 30%;
   }
 
   .contenedor {
-    margin-left: 2%; 
+    margin-left: 2%;
   }
 
   .palabras {
-    padding: 1%; 
+    padding: 1%;
   }
 
   .letras {
@@ -499,60 +501,45 @@ h1 {
   }
 
   .volver {
-    padding: 1% 5%; 
+    padding: 1% 5%;
   }
 
   .logo {
-    height: 250px; 
-    margin-top: 30%; 
+    height: 250px;
+    margin-top: 3%;
   }
 
   .avances {
-    max-width: 60%;  
-    margin-top: 2%; 
+    max-width: 90%;
+    margin-top: 2%;
   }
 
   .div2 {
-    height: 100vh;
+    flex-direction: column;
+    
   }
 
   .imagen {
     width: 80%;
-    margin: 0 auto; 
+    margin: 0 auto;
   }
 
   .solo {
-    width: 100%;
+    width: 20%;
     margin-top: 2%;
-    display: grid;
-    grid-template-columns: repeat(8,15%);
   }
 
   .contenedor {
-    margin-left: 2%; 
-    margin-top: 10%;
+    margin-left: 2%;
   }
 
   .cerrar {
-    margin-top: -10%; 
-    margin-left: 70%; 
+    margin-top: -10%;
+    margin-left: 70%;
   }
-  .cuadros {
-    display: flex;
-    flex-direction: column;
-  height: 100%;
-}
-.body1{
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: linear-gradient(to top left, #7364f5, #050b63);
-  z-index: -1;
-}
 
 }
+
+
 
 </style>
