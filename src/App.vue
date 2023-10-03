@@ -305,6 +305,8 @@ const agregarcate = (item) => {
   background-image: linear-gradient(to top left, #7364f5, #050b63);
   text-align: center;
   align-items: center;
+  background-size: cover; /* Hace que la imagen de fondo se ajuste al tamaño de la ventana */
+  background-attachment: fixed;
 }
 
 .sub1 {
@@ -348,19 +350,6 @@ a {
   padding: 1% 3%;
   border: 1px solid white;
   cursor: pointer;
-}
-
-.cuadros {
-  margin: 10%;
-  display: grid;
-  width: 50%;
-  height: 10%;
-  justify-content: center;
-  align-items: center;
-  border: 3px solid #FFF800;
-  background-color: #050b63;
-  color: #FFF800;
-  font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 img {
@@ -471,68 +460,99 @@ h1 {
   font-weight: 900;
 }
 
-/* Estilos para pantallas con un ancho mínimo de 350px y máximo de 1200px */
-@media (min-width: 350px) and (max-width: 1200px) {
-  .body1 {
-    height: auto; /* Ajusta la altura según el contenido */
-  }
+@media(max-width: 2000px) {
+  .cuadros {
+  margin: 10%;
+  width: 50%;
+  height: 10%;
+  justify-content: center;
+  align-items: center;
+  border: 3px solid #FFF800;
+  background-color: #050b63;
+  color: #FFF800;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+}
+
+@media(max-width: 1200px) {
 
   .sub1 {
-    font-size: 250%; /* Ajusta el tamaño del texto */
+    margin-top: 10%;
+    font-size: 180%; 
   }
 
   button {
-    width: 30%; /* Ajusta el ancho de los botones */
+    margin-top: 10%;
+    width: 30%; 
   }
 
   .contenedor {
-    margin-left: 2%; /* Ajusta el margen izquierdo del contenedor */
+    margin-left: 2%; 
   }
 
   .palabras {
-    padding: 1%; /* Ajusta el relleno de las palabras */
+    padding: 1%; 
   }
 
   .letras {
-    margin-left: 0; /* Restaura el margen izquierdo de las letras */
+    margin-left: 0;
   }
 
   .volver {
-    padding: 1% 5%; /* Ajusta el relleno del botón de volver */
+    padding: 1% 5%; 
   }
 
   .logo {
-    height: 250px; /* Ajusta la altura del logotipo */
-    margin-top: 3%; /* Ajusta el margen superior del logotipo */
+    height: 250px; 
+    margin-top: 30%; 
   }
 
   .avances {
-    max-width: 90%; /* Ajusta el ancho máximo del elemento .avances */
-    margin-top: 2%; /* Ajusta el margen superior de .avances */
+    max-width: 60%;  
+    margin-top: 2%; 
   }
 
   .div2 {
-    flex-direction: column; /* Cambia la dirección de la fila a columna en .div2 */
+    height: 100vh;
   }
 
   .imagen {
-    width: 80%; /* Ajusta el ancho de la imagen */
-    margin: 0 auto; /* Centra la imagen en la pantalla */
+    width: 80%;
+    margin: 0 auto; 
   }
 
   .solo {
-    width: 20%; /* Ajusta el ancho del elemento .solo */
-    margin-top: 2%; /* Ajusta el margen superior de .solo */
+    width: 100%;
+    margin-top: 2%;
+    display: grid;
+    grid-template-columns: repeat(8,15%);
   }
 
   .contenedor {
-    margin-left: 2%; /* Ajusta el margen izquierdo del contenedor */
+    margin-left: 2%; 
+    margin-top: 10%;
   }
 
   .cerrar {
-    margin-top: -10%; /* Ajusta el margen superior del botón cerrar */
-    margin-left: 70%; /* Ajusta el margen izquierdo del botón cerrar */
+    margin-top: -10%; 
+    margin-left: 70%; 
   }
+  .cuadros {
+    display: flex;
+    flex-direction: column;
+  height: 100%;
+}
+.body1{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(to top left, #7364f5, #050b63);
+  z-index: -1;
+}
+
 }
 
 </style>
