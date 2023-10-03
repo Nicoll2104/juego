@@ -470,4 +470,69 @@ h1 {
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-weight: 900;
 }
+
+/* Estilos para pantallas con un ancho mínimo de 350px y máximo de 1200px */
+@media (min-width: 350px) and (max-width: 1200px) {
+  .body1 {
+    height: auto; /* Ajusta la altura según el contenido */
+  }
+
+  .sub1 {
+    font-size: 250%; /* Ajusta el tamaño del texto */
+  }
+
+  button {
+    width: 30%; /* Ajusta el ancho de los botones */
+  }
+
+  .contenedor {
+    margin-left: 2%; /* Ajusta el margen izquierdo del contenedor */
+  }
+
+  .palabras {
+    padding: 1%; /* Ajusta el relleno de las palabras */
+  }
+
+  .letras {
+    margin-left: 0; /* Restaura el margen izquierdo de las letras */
+  }
+
+  .volver {
+    padding: 1% 5%; /* Ajusta el relleno del botón de volver */
+  }
+
+  .logo {
+    height: 250px; /* Ajusta la altura del logotipo */
+    margin-top: 3%; /* Ajusta el margen superior del logotipo */
+  }
+
+  .avances {
+    max-width: 90%; /* Ajusta el ancho máximo del elemento .avances */
+    margin-top: 2%; /* Ajusta el margen superior de .avances */
+  }
+
+  .div2 {
+    flex-direction: column; /* Cambia la dirección de la fila a columna en .div2 */
+  }
+
+  .imagen {
+    width: 80%; /* Ajusta el ancho de la imagen */
+    margin: 0 auto; /* Centra la imagen en la pantalla */
+  }
+
+  .solo {
+    width: 20%; /* Ajusta el ancho del elemento .solo */
+    margin-top: 2%; /* Ajusta el margen superior de .solo */
+  }
+
+  .contenedor {
+    margin-left: 2%; /* Ajusta el margen izquierdo del contenedor */
+  }
+
+  .cerrar {
+    margin-top: -10%; /* Ajusta el margen superior del botón cerrar */
+    margin-left: 70%; /* Ajusta el margen izquierdo del botón cerrar */
+  }
+}
+
 </style>
