@@ -477,7 +477,7 @@ h1 {
 
 @media (min-width: 350px) and (max-width: 1200px) {
   .body1 {
-    height: 145vh;
+    height: 190vh;
   }
 
   .sub1 {
