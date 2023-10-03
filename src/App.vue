@@ -386,7 +386,7 @@ img {
   width: 200px;
   height: 300px;
   margin-bottom: 0.5rem;
-  background-color: #7364f5;
+  background-color: #8fe3ff;
   width: 100%;
   border-radius: 100%;
 }
@@ -409,7 +409,7 @@ h1 {
   width: 100%;
   border: solid;
   flex-direction:column-reverse;
-  background-color: #C4FAF8;
+  background-color: #FEC8D8;
   color: #050b63;
   font-family: Georgia, 'Times New Roman', Times, serif;
 }
