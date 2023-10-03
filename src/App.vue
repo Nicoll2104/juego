@@ -15,16 +15,18 @@
         </button>
       </div>
     </div>
-      <div v-else>
-        <div>
-          <img :src="completado ==='ganaste' ? ganaste : imagen<8 ? img[imagen] : perdiste" alt="" />
+      <div class="div2" v-else>
+        <div class="imagen">
+          <img class="avances" :src="completado ==='ganaste' ? ganaste : imagen<8 ? img[imagen] : perdiste" alt="" />
         </div>
-        <div class="contenedor">
-          <div class="cuadros" v-for="letra in palabra">
+          <div class="solo">
+            <div class="cuadros" v-for="letra in palabra">
             <p class="cambiar">{{comprobar(letra.toLowerCase()) }}</p>
           </div>
-          <div>
-          <button
+          </div>
+          <div class="contenedor">
+            <div class="letras">
+              <button
             v-for="(item, index) in alfa"
             :key="index"
             @click="revisar(item)"
@@ -32,10 +34,10 @@
           >
             {{ item }}
           </button>
+            </div>
+          <div>
+          <button class="volver" @click="volver(completado); icon = true;">volver</button>
         </div>
-      </div>
-        <div>
-          <button @click="volver(completado); icon = true;">volver</button>
         </div>
       </div>
       <div class="q-pa-md q-gutter-sm">
@@ -50,10 +52,10 @@
                   }}
                 </div>
                 <q-space />
-                <q-btn icon="X" flat round dense v-close-popup />
+                <q-btn class="cerrar" icon="X" flat round dense v-close-popup />
               </q-card-section>
               <q-card-section class="row">
-                <div
+                <div 
                   v-for="(item, index) in categorias"
                   :key="index"
                   class="cardCategoria"
@@ -63,7 +65,7 @@
                   <img :src="item.imagen" alt="" class="imgsCategoria" />
                   <h4>{{ item.nombre }}</h4>
                 </div>
-                <button
+                <button class="botones"
                   v-for="(item, i) in dificultades"
                   :key="i"
                   v-else
@@ -289,6 +291,7 @@ const agregarcate = (item) => {
 </script>
 
 <style scoped>
+
 .titulo {
   font-family: Georgia, 'Times New Roman', Times, serif;
   display: inline-block;
@@ -348,16 +351,16 @@ a {
 }
 
 .cuadros {
-  display: flex;
-  width: 40px;
-  height: 40px;
+  margin: 10%;
+  display: grid;
+  width: 50%;
+  height: 10%;
   justify-content: center;
   align-items: center;
-  border: 7px solid rgb(0, 0, 0);
-  font-size: x-large;
-  margin: 1%;
+  border: 3px solid #FFF800;
   background-color: #050b63;
-  color: white;
+  color: #FFF800;
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 img {
@@ -369,21 +372,23 @@ img {
   height: 330px;
   width: 100%;
   max-width: 300px;
-  margin-top: 14%;
+  margin-top: 6%;
 }
 
 .cardCategoria {
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   align-items: center;
   cursor: pointer;
   margin: 1%;
 }
-
 .imgsCategoria {
-  width: 100px;
-  height: 100px;
+  width: 200px;
+  height: 300px;
   margin-bottom: 0.5rem;
+  background-color: #7364f5;
+  width: 100%;
+  border-radius: 100%;
 }
 
 .cambiar {
@@ -401,13 +406,68 @@ h1 {
   color: #050b63;
 }
 .q-card{
+  width: 100%;
+  border: solid;
+  flex-direction:column-reverse;
   background-color: #C4FAF8;
-  align-content: flex-start;
-  justify-content: flex-end;
+  color: #050b63;
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }
 .text-h6{
   color: #050b63;
   font-weight: 900;
+}
+.botones{
+ display: flex;
+ padding: 1%;
+ width: 25%;
+ text-align: center;
+ background-color: #050b63;
+ color: #FFF800;
+}
+.row.items-center.q-pb-none{
+  display: flex;
+  flex-direction: column;
+}
+.cerrar{
+  margin-top: -8%;
+  margin-left: 80%;
+}
+.avances{
+  max-width: 86%;
+  margin-top: 4%;
+  border: solid 10px #ffc0dd;
+}
+.div2{
+  display: flex;
+}
+.imagen{
+  width: 40%;
+}
+.solo{
+  width: 10%;
+  margin-top: 5%;
+}
+.contenedor{
+  display: flex;
+  flex-direction:column;
+  margin-left: 7%;
+}
+.palabras{padding: 0.%;
+  background-color: #C4FAF8;
+  border: solid 5px #050b63;
+  color: #050b63;
+  font-weight: 900;
   font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.letras{
+  margin-left: -4%;
+}
+.volver{
+  background-color: #050b63;
+  border: solid 5px #FFF800;
+  color: #FFF800;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-weight: 900;
 }
 </style>
