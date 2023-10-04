@@ -477,7 +477,7 @@ h1 {
 
 @media (min-width: 350px) and (max-width: 1200px) {
   .body1 {
-    height: 190vh;
+    height: 210vh;
   }
 
   .sub1 {
@@ -516,8 +516,11 @@ h1 {
 
   .div2 {
     flex-direction: column;
-    
   }
+
+  .q-pa-md {
+    padding: 0 !important;
+}
 
   .imagen {
     width: 80%;
