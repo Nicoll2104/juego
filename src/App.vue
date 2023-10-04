@@ -518,9 +518,11 @@ h1 {
     flex-direction: column;
   }
 
-  .q-pa-md {
-    padding: 0 !important;
+  body .container .q-pa-md {
+    margin: 10px;
 }
+
+
 
   .imagen {
     width: 80%;
